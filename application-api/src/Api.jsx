@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
+import Home from "./Home";
 
-function Users() {
+function Api() {
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(res => res.json())
-            .then(data => setUsers(data));
+            .then(data => {
+                setUsers(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error("Erreur:", error);
+                setLoading(false);
+            });
     }, []);
 
-    return (
-        <ul>
-            {users.map(user => (
-                <li key={user.id}>{user.name}</li>
-            ))}
-        </ul>
-    );
+    return <Home users={users} loading={loading} />;
 }
+
+export default Api;
