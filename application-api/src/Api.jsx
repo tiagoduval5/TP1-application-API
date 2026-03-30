@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Home from "./Home";
+import AppRoutes from "./router";
 
 function Api() {
     const [users, setUsers] = useState([]);
@@ -18,7 +18,7 @@ function Api() {
             });
     }, []);
 
-    return <Home users={users} loading={loading} />;
+    return <AppRoutes users={users} loading={loading} />;
 }
 
 export default Api;
