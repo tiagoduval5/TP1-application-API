@@ -18,6 +18,7 @@ function Home({ users, loading }) {
                         <th>Site web</th>
                         <th>Ville</th>
                         <th>Entreprise</th>
+                        <th>Détails</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,7 @@ function Home({ users, loading }) {
                             <td><a href={`https://${user.website}`} target="_blank" rel="noopener noreferrer">{user.website}</a></td>
                             <td>{user.address.city}</td>
                             <td>{user.company.name}</td>
+                            <td><a href={`/users/${user.id}`} className="details-link">Voir Détails</a></td>
                         </tr>
                     ))}
                 </tbody>

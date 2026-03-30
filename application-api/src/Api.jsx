@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
+import UserDetails from "./UserDetails";
 
 function Api() {
     const [users, setUsers] = useState([]);
@@ -18,7 +20,12 @@ function Api() {
             });
     }, []);
 
-    return <Home users={users} loading={loading} />;
+    return (
+        <Routes>
+            <Route path="/" element={<Home users={users} loading={loading} />} />
+            <Route path="/users/:id" element={<UserDetails users={users} />} />
+        </Routes>
+    );
 }
 
 export default Api;
