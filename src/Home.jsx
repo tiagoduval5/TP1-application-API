@@ -2,11 +2,15 @@ import { useState } from "react";
 import "./Users.css";
 import UserSearch from "./Search";
 
-function Home({ users, loading }) {
+function Home({ users, loading, error }) {
 	const [query, setQuery] = useState("");
 
 	if (loading) {
 		return <div className="loading">Chargement des utilisateurs...</div>;
+	}
+
+	if (error) {
+		return <div className="error-message" style={{ color: "red", padding: "20px", fontSize: "16px" }}>⚠️ {error}</div>;
 	}
 
 	const filteredUsers = users.filter((user) =>
